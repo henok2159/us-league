@@ -12,8 +12,19 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    int selected=0;
+    int selected=1;
     return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: (() {
+        setState(() {
+          if(selected==0)selected=1;
+          else selected=0;
+        });
+
+      }
+      
+      ),
+      child: Text(selected==0?"Team":"Game"),
+      ),
     appBar: AppBar(
       toolbarHeight: 80,
       title:Container(child:
@@ -33,6 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
           setState(() {
             selected=1;
           });
+          
         },child: Text("Team",style: TextStyle(color: selected==1?Colors.white:Colors.grey),)),
      ]),)),
      body:selected==0?GameScreen():TeamScreen()
